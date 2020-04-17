@@ -2,11 +2,27 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>*</members>
-        <name>ApexClass</name>
+        <name>Network</name>
     </types>
     <types>
         <members>*</members>
-        <name>ApexComponent</name>
+        <name>CustomSite</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>SiteDotCom</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
     </types>
     <types>
         <members>*</members>
@@ -14,27 +30,19 @@
     </types>
     <types>
         <members>*</members>
-        <name>ApexTestSuite</name>
+        <name>ApexComponent</name>
     </types>
     <types>
         <members>*</members>
-        <name>ApexTrigger</name>
+        <name>Portal</name>
     </types>
     <types>
         <members>*</members>
-        <name>AuraDefinitionBundle</name>
+        <name>Profile</name>
     </types>
     <types>
         <members>*</members>
-        <name>LightningComponentBundle</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>StaticResource</name>
-    </types>
-    <types>
-        <members>*</members>
-        <name>CustomObject</name>
+        <name>Document</name>
     </types>
     <version>48.0</version>
 </Package>
