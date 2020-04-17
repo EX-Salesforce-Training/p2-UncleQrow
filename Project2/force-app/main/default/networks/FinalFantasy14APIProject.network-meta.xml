@@ -34,10 +34,10 @@
         <forgotPasswordPageOverrideSetting>Designer</forgotPasswordPageOverrideSetting>
         <homePageOverrideSetting>Designer</homePageOverrideSetting>
         <loginPageOverrideSetting>Designer</loginPageOverrideSetting>
-        <selfRegProfilePageOverrideSetting>Designer</selfRegProfilePageOverrideSetting>
+        <selfRegProfilePageOverrideSetting>Standard</selfRegProfilePageOverrideSetting>
     </networkPageOverrides>
     <picassoSite>FinalFantasy14APIProject1</picassoSite>
-    <selfRegistration>false</selfRegistration>
+    <selfRegistration>true</selfRegistration>
     <sendWelcomeEmail>true</sendWelcomeEmail>
     <site>FinalFantasy14APIProject</site>
     <status>UnderConstruction</status>
