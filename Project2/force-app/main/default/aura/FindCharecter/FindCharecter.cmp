@@ -1,0 +1,7 @@
+<aura:component >
+	<div class="row">
+        <h2 class="header">Charecter Connection</h2>
+        <lightning:input type="date" name="input1" label="Enter a charecter Name"/>
+    </div>
+    <lightning:button label="Find Charecter" title="Find Charecter" onclick="{!c.handleClick}"/>
+</aura:component>
