@@ -1,7 +1,22 @@
-<aura:component >
-	<div class="row">
-        <h2 class="header">Charecter Connection</h2>
-        <lightning:input type="date" name="input1" label="Enter a charecter Name"/>
-    </div>
-    <lightning:button label="Find Charecter" title="Find Charecter" onclick="{!c.handleClick}"/>
+<aura:component controller= "FindCharecterController" implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name = "CharecterName" type="String"/>
+    <aura:attribute name = "Avatar" type="String"/>
+    <aura:attribute name = "Server" type="String"/>
+    <aura:attribute name = "CId" type="String"/>
+    <aura:attribute name="Search" type="boolean" default="true" />
+    <aura:if isTrue="{!v.Search}">
+        <div class="row">
+            <lightning:input name="input8" value="{!v.CharecterName}" placeholder="type your charecter name..." label="Charecter Name" />
+            <lightning:button label="Find Charecter" title="Find Charecter" onclick="{!c.handleClick}"/>
+            <aura:set attribute="else">
+                <lightning:card footer="Card Footer" title="{!v.CharecterName}">
+                    <p class="slds-p-horizontal_small">
+                        <lightning:avatar src="{!v.Avatar}" fallbackIconName="standard:avatar" alternativeText="{!v.CharecterName}"/>
+                        Server: {!Server}
+                    </p>
+                </lightning:card>
+                <lightning:button label="Set Charecter" title="Set Charecter" onclick="{!c.SaveCharecter}"/>
+            </aura:set>
+        </div>
+    </aura:if>
 </aura:component>

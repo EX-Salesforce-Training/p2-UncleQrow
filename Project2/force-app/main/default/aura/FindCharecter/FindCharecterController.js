@@ -1,5 +1,8 @@
 ({
 	handleClick : function (cmp, event, helper) {
-        alert("You clicked: " + event.getSource().get("v.label"));
+         helper.doSearch(cmp,event,helper);
+    },
+    SaveCharecter: function (cmp, event, helper){
+        helper.saveId(cmp,event,helper);
     }
 })

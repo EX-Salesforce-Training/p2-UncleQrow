@@ -1,3 +1,3 @@
-<aura:component >
+<aura:component implements="forceCommunity:availableForAllPageTypes">
 	 <lightning:avatar src="/docs/component-library/app/images/examples/avatar1.jpg" initials="BW" fallbackIconName="standard:avatar" alternativeText="Your Charecter"/>
 </aura:component>
