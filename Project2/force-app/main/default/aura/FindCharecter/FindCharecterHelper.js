@@ -24,7 +24,7 @@
         $A.enqueueAction(action);
     },
     saveId: function(component,event,helper) {
-        var save_action = component.get("c.saveCId");
+        var save_action = component.get("c.saveCharecter");
         save_action.setParams({});
         $A.enqueueAction(save_action);
     }

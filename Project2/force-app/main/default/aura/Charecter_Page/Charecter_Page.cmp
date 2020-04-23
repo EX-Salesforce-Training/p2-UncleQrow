@@ -1,3 +1,6 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes">
-	 <lightning:avatar src="/docs/component-library/app/images/examples/avatar1.jpg" initials="BW" fallbackIconName="standard:avatar" alternativeText="Your Charecter"/>
+<aura:component controller="ProfileInfoController" implements="forceCommunity:availableForAllPageTypes">
+    <aura:attribute name="CName" type="string"/>
+    <aura:attribute name="Race" type="String"/>
+    <aura:attribute name="Server" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 </aura:component>
