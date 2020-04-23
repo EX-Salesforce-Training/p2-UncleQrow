@@ -1,5 +1,5 @@
 ({
-	grabProfile : function() {
+	grabProfile : function(component,event,helper) {
 		var action = component.get("c.retrieveCharInfo");
         action.setParams({});
         action.setCallback(this, function(response){
@@ -23,7 +23,7 @@
         });
         $A.enqueueAction(action);
 	},
-    grabClasses : function(){
+    grabClasses : function(component,event,helper){
         var action = component.get("c.getClassInfo");
         action.setParams({});
         action.setCallback(this, function(response){
