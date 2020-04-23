@@ -110,6 +110,11 @@
         <field>Charecter__c.Portrait_Link__c</field>
         <readable>true</readable>
     </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Charecter__c.Primary_Charecter__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
         <enabled>false</enabled>

@@ -52,9 +52,12 @@ public class FindCharecterController {
     @auraEnabled
     public static void saveCharecter(string Id){
         List<Charecter__c> UserChars = [SELECT Name FROM Charecter__c WHERE OwnerId =: UserInfo.getUserId() LIMIT 1];
-        List<Charecter__c> savedChars = [SELECT Name,Id__c, OwnerId FROM Charecter__c WHERE Id__c =:Id];
+        List<Charecter__c> savedChars = [SELECT Name,Id__c, OwnerId, Primary_Charecter__c FROM Charecter__c WHERE Id__c =:Id];
         if(!UserChars.isEmpty()){
-            delete UserChars[0];
+            for(Charecter__c item: savedChars){
+                item.Primary_Charecter__c = false;
+                update item;
+            }
         }
         if(!savedChars.isEmpty()){
             savedChars[0].OwnerId = UserInfo.getUserId();
