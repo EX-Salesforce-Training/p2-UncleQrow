@@ -51,14 +51,25 @@ public class FindCharecterController {
     }
     @auraEnabled
     public static void saveCharecter(string Id){
-        Map <String, Object> Info = getCharecterInfo(Id);
-        Map<String, Object> Race = (Map<String, Object>) Info.get('Race');
-        Charecter__c myCharecter = new Charecter__c();
-        myCharecter.Name = string.valueOf(Info.get('Name'));
-        myCharecter.Id__c = string.valueOf(Info.get('ID'));
-        myCharecter.Race__c = string.valueOf(Race.get('Name'));
-        mycharecter.Portrait_Link__c = string.valueof(Info.get('Portrait'));
-        myCharecter.OwnerId = UserInfo.getUserId();
-        upsert myCharecter;
+        List<Charecter__c> UserChars = [SELECT Name FROM Charecter__c WHERE OwnerId =: UserInfo.getUserId() LIMIT 1];
+        List<Charecter__c> savedChars = [SELECT Name,Id__c, OwnerId FROM Charecter__c WHERE Id__c =:Id];
+        if(!UserChars.isEmpty()){
+            delete UserChars[0];
+        }
+        if(!savedChars.isEmpty()){
+            savedChars[0].OwnerId = UserInfo.getUserId();
+            update savedChars[0];
+        } 
+        else{
+            Map <String, Object> Info = getCharecterInfo(Id);
+            Map<String, Object> Race = (Map<String, Object>) Info.get('Race');
+            Charecter__c myCharecter = new Charecter__c();
+            myCharecter.Name = string.valueOf(Info.get('Name'));
+            myCharecter.Id__c = string.valueOf(Info.get('ID'));
+            myCharecter.Race__c = string.valueOf(Race.get('Name'));
+            mycharecter.Portrait_Link__c = string.valueof(Info.get('Portrait'));
+            myCharecter.OwnerId = UserInfo.getUserId();
+            insert myCharecter;
+        }
     }
 }
