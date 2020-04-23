@@ -29,7 +29,7 @@ public class FindCharecterController {
             Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
             Charecter = (Map<String, Object>) results.get('Character');
         }
-        //system.debug(Race.get('Name'));
+        //system.debug(Charecter.get('Portrait'));
         return Charecter;
     }
     @auraEnabled
@@ -57,6 +57,7 @@ public class FindCharecterController {
         myCharecter.Name = string.valueOf(Info.get('Name'));
         myCharecter.Id__c = string.valueOf(Info.get('ID'));
         myCharecter.Race__c = string.valueOf(Race.get('Name'));
+        mycharecter.Portrait_Link__c = string.valueof(Info.get('Portrait'));
         myCharecter.OwnerId = UserInfo.getUserId();
         upsert myCharecter;
     }

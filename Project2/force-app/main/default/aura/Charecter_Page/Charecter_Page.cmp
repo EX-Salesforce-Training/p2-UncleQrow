@@ -2,5 +2,20 @@
     <aura:attribute name="CName" type="string"/>
     <aura:attribute name="Race" type="String"/>
     <aura:attribute name="Server" type="String"/>
+    <aura:attribute name="Portrait" type="string"/>
+    <aura:attribute name="ClassNames" type="list"/>
+    <aura:attribute name="ClassLevels" type="map"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="c-Info">
+        <img src="{!v.Portrait}"/>
+        <p>Name: {!CName}</p>
+        <p>Server: {!Server}</p>
+        <p>Race: {!Race}</p>
+        <div class="c-classes">
+            <aura:iteration items = "{!v.ClassNames}" var="Job">
+                <c:FF14Classes map="{!v.ClassLevels}" key="{!Job}"/>
+            </aura:iteration>
+        </div>
+    </div>
 </aura:component>

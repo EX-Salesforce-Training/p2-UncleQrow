@@ -21,16 +21,24 @@ public class ProfileInfoController {
         }
         return classes;
     }
+    @auraEnabled
+    public static Map<String,String> retrieveCharInfo(){
+        Id userId = UserInfo.getUserId();
+        Charecter__c myCharecter = [SELECT Name,Id__c,Race__c,Server__c,Portrait_Link__c FROM Charecter__c WHERE OwnerId =:userId];
+        Map<String,String> Info = new Map<String, String>();
+        Info.put('Name', myCharecter.Name);
+        Info.put('Race',  myCharecter.Race__c);
+        Info.put('Server',  myCharecter.Server__c);
+        Info.put('Portrait',  myCharecter.Portrait_Link__c);
+        return Info;
+    }
     
     @auraEnabled
     public static Map <String, String> getClassInfo(){
         Id userId = UserInfo.getUserId();
-        Charecter__c myCharecter = [SELECT Name,Id__c,Race__c,Server__c FROM Charecter__c WHERE OwnerId =:userId];
+        Charecter__c myCharecter = [SELECT Id__c FROM Charecter__c WHERE OwnerId =:userId];
         Map<String,integer> Jobs = getCharecterClasses(myCharecter.Id__c);
         Map<String,String> Info = new Map<String, String>();
-        Info.put('Name', mycharecter.Name);
-        Info.put('Race', mycharecter.Race__c);
-        Info.put('Server', mycharecter.Server__c);
         for(String key: Jobs.keyset()){
             Info.put(key, string.valueOf(Jobs.get(key)));
         }
