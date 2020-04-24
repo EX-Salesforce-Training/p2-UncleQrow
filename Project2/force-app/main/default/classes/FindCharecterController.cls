@@ -1,4 +1,5 @@
 public class FindCharecterController {
+    @auraEnabled
     public static Map <String,Object> findCharecter(string name){
         Map<String, Object> charecter = new Map<String, Object>();
         Http http = new Http();
@@ -18,6 +19,7 @@ public class FindCharecterController {
         system.debug(charecter);
         return charecter;
     }
+    @auraEnabled
     public static Map<String, Object> getCharecterInfo(String Id){
         Http http = new Http();
         HttpRequest request = new HttpRequest();
@@ -33,18 +35,14 @@ public class FindCharecterController {
         return Charecter;
     }
     @auraEnabled
-    public static Map <String, String> getCharecter(string name){
+    public static WrapperFixer getCharecter(string name){
         Map<String,Object> charecter = findCharecter(name);
-        Map <String, String> Info = new Map<String, String>();
+        WrapperFixer Info = new WrapperFixer();
         if(charecter != null || !charecter.isEmpty()){
-            String Avatar = string.valueOf(charecter.get('Avatar'));
-            String CName = string.valueOf(charecter.get('Name'));
-            String Server = string.valueOf(charecter.get('Server'));
-            String charecterId = string.valueOf(charecter.get('ID'));
-            Info.put('Avatar', Avatar);
-            Info.put('CName', CName);
-            Info.put('Server', Server);
-            Info.put('charecterId', charecterId);
+            Info.Avatar = string.valueOf(charecter.get('Avatar'));
+            Info.CName = string.valueOf(charecter.get('Name'));
+            Info.Server = string.valueOf(charecter.get('Server'));
+            Info.charecterId = string.valueOf(charecter.get('ID'));
         }
         return Info;
         
@@ -66,11 +64,13 @@ public class FindCharecterController {
         else{
             Map <String, Object> Info = getCharecterInfo(Id);
             Map<String, Object> Race = (Map<String, Object>) Info.get('Race');
+            system.debug(Race);
             Charecter__c myCharecter = new Charecter__c();
             myCharecter.Name = string.valueOf(Info.get('Name'));
             myCharecter.Id__c = string.valueOf(Info.get('ID'));
             myCharecter.Race__c = string.valueOf(Race.get('Name'));
             mycharecter.Portrait_Link__c = string.valueof(Info.get('Portrait'));
+            mycharecter.Server__c = string.valueOf(Info.get('Server'));
             myCharecter.OwnerId = UserInfo.getUserId();
             insert myCharecter;
         }

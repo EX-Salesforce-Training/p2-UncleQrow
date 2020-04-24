@@ -1,4 +1,5 @@
 public class ProfileInfoController {
+    @auraEnabled
     public static Map<String,integer> getCharecterClasses(String Id){
         Http http = new Http();
         HttpRequest request = new HttpRequest();
@@ -22,21 +23,15 @@ public class ProfileInfoController {
         return classes;
     }
     @auraEnabled
-    public static Map<String,String> retrieveCharInfo(){
-        Id userId = UserInfo.getUserId();
-        Charecter__c myCharecter = [SELECT Name,Id__c,Race__c,Server__c,Portrait_Link__c FROM Charecter__c WHERE OwnerId =:userId];
-        Map<String,String> Info = new Map<String, String>();
-        Info.put('Name', myCharecter.Name);
-        Info.put('Race',  myCharecter.Race__c);
-        Info.put('Server',  myCharecter.Server__c);
-        Info.put('Portrait',  myCharecter.Portrait_Link__c);
-        return Info;
+    public static Charecter__c retrieveCharInfo(){
+        Charecter__c myCharecter = [SELECT Name ,Race__c,Server__c,Portrait_Link__c FROM Charecter__c WHERE OwnerId =:UserInfo.getUserId() AND Primary_Charecter__c = true LIMIT 1];
+        return myCharecter;
     }
     
     @auraEnabled
     public static Map <String, String> getClassInfo(){
         Id userId = UserInfo.getUserId();
-        Charecter__c myCharecter = [SELECT Id__c FROM Charecter__c WHERE OwnerId =:userId];
+        Charecter__c myCharecter = [SELECT Id__c FROM Charecter__c WHERE OwnerId =:userId AND Primary_Charecter__c = true LIMIT 1];
         Map<String,integer> Jobs = getCharecterClasses(myCharecter.Id__c);
         Map<String,String> Info = new Map<String, String>();
         for(String key: Jobs.keyset()){

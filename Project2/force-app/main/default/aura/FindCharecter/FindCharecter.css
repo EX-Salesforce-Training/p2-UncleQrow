@@ -1,0 +1,7 @@
+.THIS{
+    font-size: 20px;
+}
+.THIS.ErrorText{
+    background-color: red;
+    color: red;
+}

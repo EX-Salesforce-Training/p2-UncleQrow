@@ -4,19 +4,30 @@
     <aura:attribute name = "Server" type="String"/>
     <aura:attribute name = "CId" type="String"/>
     <aura:attribute name="Search" type="boolean" default="true" />
+    <aura:attribute name="nullChar" type="boolean" default="false" />
     <aura:if isTrue="{!v.Search}">
         <div class="row">
-            <lightning:input name="input8" value="{!v.CharecterName}" placeholder="type your charecter name..." label="Charecter Name" />
+            <aura:if isTrue="{!v.nullChar}">
+                <p class="ErrorText" style="color: red">Error: Character not found. Please Retry</p>
+            </aura:if>
+            <lightning:input name="input8" value="{!v.CharecterName}" placeholder="type your character name..." label="Character Name" />
             <lightning:button label="Find Charecter" title="Find Charecter" onclick="{!c.handleClick}"/>
-            <aura:set attribute="else">
-                <lightning:card footer="Card Footer" title="{!v.CharecterName}">
-                    <p class="slds-p-horizontal_small">
-                        <lightning:avatar src="{!v.Avatar}" fallbackIconName="standard:avatar" alternativeText="{!v.CharecterName}"/>
-                        Server: {!Server}
-                    </p>
-                </lightning:card>
-                <lightning:button label="Set Charecter" title="Set Charecter" onclick="{!c.SaveCharecter}"/>
-            </aura:set>
         </div>
+        <aura:set attribute="else">
+            <div class="slds-align_absolute-center" style="size:60px">
+                <Lightning:card>
+                    <div class="slds-align_absolute-center">
+                    <p>{!v.CharecterName}</p>
+                    </div>
+                    <div class="slds-align_absolute-center">
+                    <img src="{!v.Avatar}"/>
+                       </div>
+                    <p>Server: {!v.Server}</p>    
+                </Lightning:card><br/>
+            </div>
+            <div class="slds-align_absolute-center">
+            	<lightning:button label="Set Character as Primary" title="Set Character as Primary" onclick="{!c.SaveCharecter}"/>
+            </div>
+        </aura:set>
     </aura:if>
 </aura:component>

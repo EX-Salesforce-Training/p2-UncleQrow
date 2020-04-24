@@ -104,7 +104,16 @@
         <apexClass>SiteRegisterControllerTest</apexClass>
         <enabled>false</enabled>
     </classAccesses>
+    <classAccesses>
+        <apexClass>WrapperFixer</apexClass>
+        <enabled>false</enabled>
+    </classAccesses>
     <custom>false</custom>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Charecter__c.Id__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
     <fieldPermissions>
         <editable>false</editable>
         <field>Charecter__c.Portrait_Link__c</field>
@@ -114,6 +123,16 @@
         <editable>false</editable>
         <field>Charecter__c.Primary_Charecter__c</field>
         <readable>false</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Charecter__c.Race__c</field>
+        <readable>true</readable>
+    </fieldPermissions>
+    <fieldPermissions>
+        <editable>true</editable>
+        <field>Charecter__c.Server__c</field>
+        <readable>true</readable>
     </fieldPermissions>
     <pageAccesses>
         <apexPage>AnswersHome</apexPage>
@@ -203,6 +222,10 @@
         <apexPage>UnderConstruction</apexPage>
         <enabled>false</enabled>
     </pageAccesses>
+    <tabVisibilities>
+        <tab>Charecter__c</tab>
+        <visibility>Hidden</visibility>
+    </tabVisibilities>
     <userLicense>Chatter External</userLicense>
     <userPermissions>
         <enabled>true</enabled>

@@ -1,10 +1,9 @@
 ({
     handleClick : function (cmp, event, helper) {
         helper.doSearch(cmp,event,helper);
-        component.set("v.Search", false);
+        //console.log('here2');
     },
-    SaveCharecter: function (cmp, event, helper){
+    SaveCharecter : function (cmp, event, helper){
         helper.saveId(cmp,event,helper);
-        component.set("v.Search", true);
     }
 })

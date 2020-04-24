@@ -8,14 +8,24 @@
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     
     <div class="c-Info">
-        <img src="{!v.Portrait}"/>
-        <p>Name: {!CName}</p>
-        <p>Server: {!Server}</p>
-        <p>Race: {!Race}</p>
-        <div class="c-classes">
-            <aura:iteration items = "{!v.ClassNames}" var="Job">
-                <c:FF14Classes map="{!v.ClassLevels}" key="{!Job}"/>
-            </aura:iteration>
+        <div class="slds-align_absolute-center">
+            <img src="{!v.Portrait}" style="width: 400px"/>
+        </div>
+        <div class="slds-align_absolute-center">
+            <p>Name: {!v.CName}</p>
+        </div>
+        <div class="slds-align_absolute-center">
+            <p>Server: {!v.Server}</p><br/>
+        </div>
+        <div class="slds-align_absolute-center">
+            <p>Race: {!v.Race}</p>
         </div>
     </div>
+    <lightning:layout multipleRows="true">
+        <aura:iteration items = "{!v.ClassNames}" var="Job">
+            <lightning:layoutItem flexibility="auto" padding="around-small" size="2">
+            	<c:FF14Classes map="{!v.ClassLevels}" key="{!Job}"/>
+            </lightning:layoutItem>
+        </aura:iteration>
+    </lightning:layout>
 </aura:component>

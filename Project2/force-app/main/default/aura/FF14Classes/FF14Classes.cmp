@@ -3,5 +3,7 @@
     <aura:attribute name="map" type="map"/>
     <aura:attribute name="key" type="string"/>
     <aura:attribute name="value" type="string"/>
-    <p>Class/Job: {!v.key} | Level: {!v.value}</p>
+    <div>
+    	<p>{!v.key} : {!v.value}</p>
+    </div>
 </aura:component>
