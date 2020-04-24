@@ -50,7 +50,7 @@
     </types>
     <types>
         <members>*</members>
-        <name>Flows</name>
+        <name>Flow</name>
     </types>
     <version>48.0</version>
 </Package>
