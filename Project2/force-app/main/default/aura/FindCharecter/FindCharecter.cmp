@@ -4,9 +4,13 @@
     <aura:attribute name = "Server" type="String"/>
     <aura:attribute name = "CId" type="String"/>
     <aura:attribute name="Search" type="boolean" default="true" />
+    <aura:attribute name="Saved" type="boolean" default="false" />
     <aura:attribute name="nullChar" type="boolean" default="false" />
     <aura:if isTrue="{!v.Search}">
         <div class="row">
+            <aura:if isTrue="{!v.Saved}">
+                <p class="SavedText" style="color: red">Charecter Saved and Viewable on My Charecter</p>
+            </aura:if>
             <aura:if isTrue="{!v.nullChar}">
                 <p class="ErrorText" style="color: red">Error: Character not found. Please Retry</p>
             </aura:if>
@@ -17,16 +21,16 @@
             <div class="slds-align_absolute-center" style="size:60px">
                 <Lightning:card>
                     <div class="slds-align_absolute-center">
-                    <p>{!v.CharecterName}</p>
+                        <p>{!v.CharecterName}</p>
                     </div>
                     <div class="slds-align_absolute-center">
-                    <img src="{!v.Avatar}"/>
-                       </div>
+                        <img src="{!v.Avatar}"/>
+                    </div>
                     <p>Server: {!v.Server}</p>    
                 </Lightning:card><br/>
             </div>
             <div class="slds-align_absolute-center">
-            	<lightning:button label="Set Character as Primary" title="Set Character as Primary" onclick="{!c.SaveCharecter}"/>
+                <lightning:button label="Set Character as Primary" title="Set Character as Primary" onclick="{!c.SaveCharecter}"/>
             </div>
         </aura:set>
     </aura:if>

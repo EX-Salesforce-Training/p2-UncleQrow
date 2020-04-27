@@ -51,6 +51,7 @@ public class FindCharecterController {
     public static void saveCharecter(string Id){
         List<Charecter__c> UserChars = [SELECT Name FROM Charecter__c WHERE OwnerId =: UserInfo.getUserId() LIMIT 1];
         List<Charecter__c> savedChars = [SELECT Name,Id__c, OwnerId, Primary_Charecter__c FROM Charecter__c WHERE Id__c =:Id];
+        system.debug(savedChars);
         if(!UserChars.isEmpty()){
             for(Charecter__c item: savedChars){
                 item.Primary_Charecter__c = false;

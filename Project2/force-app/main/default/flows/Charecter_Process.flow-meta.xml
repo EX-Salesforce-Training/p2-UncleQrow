@@ -33,7 +33,7 @@
         <dataType>Boolean</dataType>
         <expression>true</expression>
     </formulas>
-    <interviewLabel>Charecter_Process-2_InterviewLabel</interviewLabel>
+    <interviewLabel>Charecter_Process-3_InterviewLabel</interviewLabel>
     <label>Charecter Process</label>
     <processMetadataValues>
         <name>ObjectType</name>
@@ -56,7 +56,7 @@
     <processMetadataValues>
         <name>TriggerType</name>
         <value>
-            <stringValue>onAllChanges</stringValue>
+            <stringValue>onCreateOnly</stringValue>
         </value>
     </processMetadataValues>
     <processType>Workflow</processType>
