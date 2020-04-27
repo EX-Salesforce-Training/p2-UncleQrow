@@ -27,7 +27,7 @@
         $A.enqueueAction(action);
 	},
     grabClasses : function(component,event,helper){
-        //console.log('inClasses');
+        console.log('inClasses');
         var action = component.get("c.getClassInfo");
         action.setParams({});
         action.setCallback(this, function(response){
@@ -36,14 +36,14 @@
             if(state == "SUCCESS"){
                 var MapKeyArray = [];
                 var ClassInfo = response.getReturnValue();
-                console.log(ClassInfo);
+                //console.log(ClassInfo);
                 component.set("v.ClassLevels", ClassInfo);
-                console.log(component.get("v.ClassLevels"));
+                //console.log(component.get("v.ClassLevels"));
                 for(var Job in ClassInfo){
                     MapKeyArray.push(Job);
                 }
                 component.set("v.ClassNames", MapKeyArray);
-                console.log(component.get("v.ClassNames"));
+               // console.log(component.get("v.ClassNames"));
             }
             else if (state === "INCOMPLETE") {
                 console.log("Failed to connect Salesforce!!");

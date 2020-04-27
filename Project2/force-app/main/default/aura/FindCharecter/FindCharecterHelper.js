@@ -16,9 +16,9 @@
                 component.set("v.CId", response.getReturnValue().charecterId);
                 component.set("v.Search", false);
                 component.set("v.nullChar", false);
-                console.log(component.get("v.Avatar"));
-                console.log(component.get("v.Server"));
-                console.log(component.get("v.CId"));
+                //console.log(component.get("v.Avatar"));
+                //console.log(component.get("v.Server"));
+                //console.log(component.get("v.CId"));
             }
             else if (state === "INCOMPLETE") {
                 console.log("Failed to connect Salesforce!!");
@@ -41,7 +41,8 @@
         save_action.setCallback(this, function(response){
              var state = response.getState();
              if(state == "SUCCESS"){
-                 console.log('Saved');
+                 component.set("v.Saved", true);
+                 component.set("v.Search", true);
              }
              else if (state === "INCOMPLETE") {
                 console.log("Failed to connect Salesforce!!");
